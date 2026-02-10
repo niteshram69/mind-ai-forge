@@ -19,21 +19,8 @@ const authenticateToken = (req, res, next) => {
     });
 };
 
-// Multer setup for PDF upload
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        const uploadDir = 'uploads/';
-        if (!fs.existsSync(uploadDir)) {
-            fs.mkdirSync(uploadDir);
-        }
-        cb(null, uploadDir);
-    },
-    filename: (req, file, cb) => {
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-        cb(null, `idea-${req.user.id}-${uniqueSuffix}${path.extname(file.originalname)}`);
-    }
-});
-
+// Multer setup for memory storage (diskStorage is not supported on Vercel)
+const storage = multer.memoryStorage();
 const upload = multer({
     storage: storage,
     fileFilter: (req, file, cb) => {
