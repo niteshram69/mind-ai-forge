@@ -38,7 +38,7 @@ const upload = multer({
 router.get('/me', authenticateToken, async (req, res) => {
     const client = await req.db.connect();
     try {
-        const result = await client.query('SELECT id, employee_id, full_name, email, role, idea_pdf_url FROM users WHERE id = $1', [req.user.id]);
+        const result = await client.query('SELECT id, employee_id, full_name, email, role, idea_pdf_url, designation, primary_technology, customer_name, customer_country FROM users WHERE id = $1', [req.user.id]);
         if (result.rows.length === 0) return res.sendStatus(404);
         res.json(result.rows[0]);
     } catch (err) {
