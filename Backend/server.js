@@ -18,9 +18,8 @@ const pool = new Pool({
     }
 });
 
-pool.connect()
-    .then(() => console.log('Connected to PostgreSQL database'))
-    .catch(err => console.error('Database connection error', err.stack));
+// pool.connect() was causing a client leak. Removed to prevent pool exhaustion.
+// Connectivity is verified on demand via routes.
 
 // Pass DB pool to request object (optional, or import in routes)
 app.use((req, res, next) => {
