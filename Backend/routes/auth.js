@@ -57,7 +57,8 @@ router.post('/register', async (req, res) => {
         if (err.code === '23505') { // Unique constraint violation
             return res.status(409).json({ error: 'User already exists (email or employee ID)' });
         }
-        res.status(500).json({ error: 'Server error during registration' });
+        const errorMessage = err.message || 'Server error during registration';
+        res.status(500).json({ error: errorMessage });
     } finally {
         client.release();
     }
@@ -100,7 +101,8 @@ router.post('/login', async (req, res) => {
 
     } catch (err) {
         console.error(err);
-        res.status(500).json({ error: 'Server error during login' });
+        const errorMessage = err.message || 'Server error during login';
+        res.status(500).json({ error: errorMessage });
     } finally {
         client.release();
     }
