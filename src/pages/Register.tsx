@@ -114,7 +114,6 @@ const Register = () => {
         try {
             setError(null);
             await api.post('/auth/register', data);
-            alert('Registration Successful! Please login.');
             navigate('/login');
         } catch (err: any) {
             console.error(err);
