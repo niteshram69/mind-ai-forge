@@ -33,6 +33,18 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/user', require('./routes/user'));
 app.use('/api/admin', require('./routes/admin'));
 
+app.get('/api/test-db', async (req, res) => {
+    try {
+        const client = await pool.connect();
+        const result = await client.query('SELECT NOW()');
+        client.release();
+        res.json({ message: 'Database connected successfully', time: result.rows[0].now });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Database connection failed', details: err.message });
+    }
+});
+
 app.get('/', (req, res) => {
     res.send('Mind AI Forge Backend is running');
 });
@@ -40,7 +52,10 @@ app.get('/', (req, res) => {
 // Error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).json({ error: 'Something went wrong!' });
+    res.status(500).json({
+        error: err.message || 'Internal Server Error',
+        details: err.stack
+    });
 });
 
 if (require.main === module) {
