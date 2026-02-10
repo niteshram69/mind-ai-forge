@@ -31,7 +31,17 @@ const Login = () => {
             navigate('/dashboard');
         } catch (err: any) {
             console.error(err);
-            setError(err.response?.data?.error || 'Login failed. Please checks your credentials.');
+            let errorMessage = 'Login failed. Please checks your credentials.';
+            if (err.response?.data?.error) {
+                if (typeof err.response.data.error === 'string') {
+                    errorMessage = err.response.data.error;
+                } else if (typeof err.response.data.error === 'object') {
+                    errorMessage = err.response.data.error.message || JSON.stringify(err.response.data.error);
+                }
+            } else if (err.message) {
+                errorMessage = err.message;
+            }
+            setError(errorMessage);
         }
     };
 
