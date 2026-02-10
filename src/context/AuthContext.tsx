@@ -30,7 +30,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 .then(response => {
                     setUser(response.data);
                 })
-                .catch(() => {
+                .catch((err) => {
+                    console.error('Auth check failed:', err);
                     localStorage.removeItem('token');
                 })
                 .finally(() => setIsLoading(false));
