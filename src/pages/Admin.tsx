@@ -79,6 +79,18 @@ const Admin = () => {
                         <Button onClick={handleExportPDF} className="bg-indigo-600 hover:bg-indigo-700 text-white">
                             Export PDF
                         </Button>
+                        <Button onClick={async () => {
+                            if (!window.confirm('Run database migration?')) return;
+                            try {
+                                await api.post('/admin/migrate-db');
+                                alert('Migration successful!');
+                            } catch (err) {
+                                console.error(err);
+                                alert('Migration failed');
+                            }
+                        }} variant="secondary" className="bg-emerald-600 hover:bg-emerald-700 text-white">
+                            Migrate DB
+                        </Button>
                     </div>
                 </div>
 
