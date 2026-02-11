@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import api from '../lib/axios';
 import { Button } from '../components/ui/button';
 import { useNavigate } from 'react-router-dom';
-import { Trash2, Eye, X } from 'lucide-react';
+import { Trash2, Eye, X, Download } from 'lucide-react';
 
 interface UserData {
     id: number;
@@ -127,6 +127,13 @@ const Admin = () => {
                                             <Button size="icon" variant="ghost" onClick={() => setSelectedUser(user)} className="text-cyan-400 hover:text-cyan-300 hover:bg-cyan-400/10">
                                                 <Eye className="w-4 h-4" />
                                             </Button>
+                                            {user.idea_pdf_url && (
+                                                <a href={user.idea_pdf_url} target="_blank" rel="noopener noreferrer">
+                                                    <Button size="icon" variant="ghost" className="text-emerald-400 hover:text-emerald-300 hover:bg-emerald-400/10">
+                                                        <Download className="w-4 h-4" />
+                                                    </Button>
+                                                </a>
+                                            )}
                                             <Button size="icon" variant="ghost" onClick={() => handleDelete(user.id)} className="text-red-400 hover:text-red-300 hover:bg-red-400/10">
                                                 <Trash2 className="w-4 h-4" />
                                             </Button>

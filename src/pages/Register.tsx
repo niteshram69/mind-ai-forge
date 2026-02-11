@@ -142,7 +142,7 @@ const Register = () => {
             <div className="max-w-3xl mx-auto">
                 <div className="text-center mb-10">
                     <h1 className="text-3xl font-extrabold text-white sm:text-4xl">
-                        Join mindAIthon
+                        Join <span className="text-white">mind</span><span className="text-sky-400">AI</span><span className="text-white">thon</span>
                     </h1>
                     <p className="mt-2 text-lg text-slate-400">
                         Complete your profile to participate
