@@ -9,7 +9,7 @@ router.post('/register', async (req, res) => {
     try {
         const {
             // Employee Details
-            employee_id, full_name, designation, primary_technology, experience_years, skill_level,
+            employee_id, full_name, designation, primary_technology, experience_years, experience_months, skill_level,
             // Customer Details
             customer_name, customer_country, customer_pic_name, customer_pic_department, current_work_description,
             // AI Engagement
@@ -32,17 +32,17 @@ router.post('/register', async (req, res) => {
         // Insert into DB
         const query = `
       INSERT INTO users (
-        employee_id, full_name, designation, primary_technology, experience_years, skill_level,
+        employee_id, full_name, designation, primary_technology, experience_years, experience_months, skill_level,
         customer_name, customer_country, customer_pic_name, customer_pic_department, current_work_description,
         ai_opportunity, customer_ai_adoption, product_business_line, worked_on_ai,
         ai_skill_level, ai_upskill_interest, ai_certification, ai_forge_core_business_view,
         email, password_hash
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21)
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22)
       RETURNING id, email, full_name, role
     `;
 
         const result = await client.query(query, [
-            employee_id, full_name, designation, primary_technology, experience_years, skill_level,
+            employee_id, full_name, designation, primary_technology, experience_years, experience_months, skill_level,
             customer_name, customer_country, customer_pic_name, customer_pic_department, current_work_description,
             ai_opportunity, customer_ai_adoption, product_business_line, worked_on_ai,
             ai_skill_level, ai_upskill_interest, ai_certification, ai_forge_core_business_view,

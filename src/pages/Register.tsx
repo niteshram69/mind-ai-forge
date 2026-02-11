@@ -32,7 +32,8 @@ const registerSchema = z.object({
     full_name: z.string().min(1, 'Full name is required'),
     designation: z.string().min(1, 'Designation is required'),
     primary_technology: z.string().min(1, 'Primary technology is required'),
-    experience_years: z.coerce.number().min(0, 'Experience cannot be negative'),
+    experience_years: z.coerce.number().min(0, 'Years cannot be negative'),
+    experience_months: z.coerce.number().min(0, 'Months cannot be negative').max(11, 'Months must be 0-11'),
     skill_level: z.enum(['Basics', 'Intermediate', 'Expert']),
 
     // Step 2
@@ -89,7 +90,7 @@ const Register = () => {
         let fieldsToValidate: (keyof RegisterFormData)[] = [];
 
         if (currentStep === 0) {
-            fieldsToValidate = ['employee_id', 'full_name', 'designation', 'primary_technology', 'experience_years', 'skill_level'];
+            fieldsToValidate = ['employee_id', 'full_name', 'designation', 'primary_technology', 'experience_years', 'experience_months', 'skill_level'];
         } else if (currentStep === 1) {
             fieldsToValidate = ['customer_name', 'customer_country', 'customer_pic_name', 'customer_pic_department', 'current_work_description'];
         } else if (currentStep === 2) {
@@ -190,10 +191,17 @@ const Register = () => {
                                             <Input {...register('primary_technology')} placeholder="React/Node.js" className="bg-slate-900/50 border-slate-700" />
                                             {errors.primary_technology && <span className="text-xs text-red-400">{errors.primary_technology.message}</span>}
                                         </div>
-                                        <div className="space-y-2">
-                                            <label className="text-sm font-medium">Experience (Years)</label>
-                                            <Input type="number" min="0" step="0.1" {...register('experience_years')} placeholder="5" className="bg-slate-900/50 border-slate-700" />
-                                            {errors.experience_years && <span className="text-xs text-red-400">{errors.experience_years.message}</span>}
+                                        <div className="grid grid-cols-2 gap-4">
+                                            <div className="space-y-2">
+                                                <label className="text-sm font-medium">Experience (Years)</label>
+                                                <Input type="number" min="0" {...register('experience_years')} placeholder="5" className="bg-slate-900/50 border-slate-700" />
+                                                {errors.experience_years && <span className="text-xs text-red-400">{errors.experience_years.message}</span>}
+                                            </div>
+                                            <div className="space-y-2">
+                                                <label className="text-sm font-medium">Experience (Months)</label>
+                                                <Input type="number" min="0" max="11" {...register('experience_months')} placeholder="0" className="bg-slate-900/50 border-slate-700" />
+                                                {errors.experience_months && <span className="text-xs text-red-400">{errors.experience_months.message}</span>}
+                                            </div>
                                         </div>
                                         <div className="space-y-2">
                                             <label className="text-sm font-medium">Skill Level</label>

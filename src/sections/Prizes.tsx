@@ -5,7 +5,7 @@ const prizes = [
   {
     icon: Medal,
     place: 'Runner Up',
-    amount: '$3,000',
+    amount: '₹ 75,000',
     description: 'Split among team members',
     color: 'from-slate-400 to-slate-500',
     borderColor: 'border-slate-400/30',
@@ -14,7 +14,7 @@ const prizes = [
   {
     icon: Trophy,
     place: 'Grand Winner',
-    amount: '$5,000',
+    amount: '₹ 1,00,000',
     description: '+ Opportunity to incubate idea',
     color: 'from-yellow-400 to-amber-500',
     borderColor: 'border-yellow-400/50',
@@ -23,7 +23,7 @@ const prizes = [
   {
     icon: Award,
     place: 'Third Place',
-    amount: '$2,000',
+    amount: '₹ 50,000',
     description: 'Split among team members',
     color: 'from-orange-400 to-amber-600',
     borderColor: 'border-orange-400/30',
@@ -63,16 +63,14 @@ export default function Prizes() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2
-            className={`text-3xl sm:text-4xl font-bold text-white mb-4 transition-all duration-700 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
+            className={`text-3xl sm:text-4xl font-bold text-white mb-4 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
           >
             Prizes & Awards
           </h2>
           <div
-            className={`w-24 h-1 bg-gradient-primary mx-auto rounded-full transition-all duration-700 delay-100 ${
-              isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
-            }`}
+            className={`w-24 h-1 bg-gradient-primary mx-auto rounded-full transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
+              }`}
           />
         </div>
 
@@ -81,22 +79,19 @@ export default function Prizes() {
           {prizes.map((prize, index) => (
             <div
               key={prize.place}
-              className={`relative group ${
-                prize.size === 'large' ? 'md:scale-110 md:-my-4 z-10' : ''
-              } ${
-                isVisible
+              className={`relative group ${prize.size === 'large' ? 'md:scale-110 md:-my-4 z-10' : ''
+                } ${isVisible
                   ? 'opacity-100 translate-y-0'
                   : 'opacity-0 translate-y-12'
-              }`}
+                }`}
               style={{
                 transitionDelay: isVisible ? `${200 + index * 150}ms` : '0ms',
                 transitionDuration: '700ms',
               }}
             >
               <div
-                className={`glass-card rounded-2xl p-8 text-center border-2 ${prize.borderColor} hover:-translate-y-2 transition-all duration-300 ${
-                  prize.size === 'large' ? 'glow-border' : ''
-                }`}
+                className={`glass-card rounded-2xl p-8 text-center border-2 ${prize.borderColor} hover:-translate-y-2 transition-all duration-300 ${prize.size === 'large' ? 'glow-border' : ''
+                  }`}
               >
                 {/* Icon */}
                 <div
@@ -112,11 +107,10 @@ export default function Prizes() {
 
                 {/* Amount */}
                 <p
-                  className={`font-bold mb-3 ${
-                    prize.size === 'large'
+                  className={`font-bold mb-3 ${prize.size === 'large'
                       ? 'text-5xl text-yellow-400 glow-text'
                       : 'text-4xl text-white'
-                  }`}
+                    }`}
                 >
                   {prize.amount}
                 </p>

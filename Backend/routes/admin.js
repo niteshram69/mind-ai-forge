@@ -22,7 +22,7 @@ const authenticateAdmin = (req, res, next) => {
 router.get('/users', authenticateAdmin, async (req, res) => {
     const client = await req.db.connect();
     try {
-        const result = await client.query('SELECT id, employee_id, full_name, email, designation, role, idea_pdf_url, created_at FROM users ORDER BY created_at DESC');
+        const result = await client.query('SELECT * FROM users ORDER BY created_at DESC');
         res.json(result.rows);
     } catch (err) {
         console.error(err);
@@ -32,7 +32,20 @@ router.get('/users', authenticateAdmin, async (req, res) => {
     }
 });
 
-// Export Users PDF
+// Delete User
+router.delete('/users/:id', authenticateAdmin, async (req, res) => {
+    const client = await req.db.connect();
+    try {
+        const { id } = req.params;
+        await client.query('DELETE FROM users WHERE id = $1', [id]);
+        res.sendStatus(204);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Server error' });
+    } finally {
+        client.release();
+    }
+});
 router.get('/export-pdf', authenticateAdmin, async (req, res) => {
     const client = await req.db.connect();
     try {
