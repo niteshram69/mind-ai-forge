@@ -81,4 +81,21 @@ router.get('/export-pdf', authenticateAdmin, async (req, res) => {
     }
 });
 
+// Run Database Migration (Add experience_months)
+router.post('/migrate-db', authenticateAdmin, async (req, res) => {
+    const client = await req.db.connect();
+    try {
+        await client.query(`
+            ALTER TABLE users 
+            ADD COLUMN IF NOT EXISTS experience_months INTEGER DEFAULT 0;
+        `);
+        res.json({ message: 'Migration successful: experience_months column added.' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Migration failed: ' + err.message });
+    } finally {
+        client.release();
+    }
+});
+
 module.exports = router;
