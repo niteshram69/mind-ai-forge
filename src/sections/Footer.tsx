@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="relative py-8 bg-[#070a1a] border-t border-indigo-500/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-sm text-slate-500">
-          <span>© 2026 Mind Ai forge. All rights reserved.</span>
+          <span>© 2026 mindAIthon. All rights reserved.</span>
           <span className="hidden sm:inline">|</span>
           <div className="flex items-center gap-4">
             <a

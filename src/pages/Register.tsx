@@ -32,7 +32,7 @@ const registerSchema = z.object({
     full_name: z.string().min(1, 'Full name is required'),
     designation: z.string().min(1, 'Designation is required'),
     primary_technology: z.string().min(1, 'Primary technology is required'),
-    experience_years: z.coerce.number().min(0, 'Experience must be number'),
+    experience_years: z.coerce.number().min(0, 'Experience cannot be negative'),
     skill_level: z.enum(['Basics', 'Intermediate', 'Expert']),
 
     // Step 2
@@ -141,7 +141,7 @@ const Register = () => {
             <div className="max-w-3xl mx-auto">
                 <div className="text-center mb-10">
                     <h1 className="text-3xl font-extrabold text-white sm:text-4xl">
-                        Join Mind AI Forge
+                        Join mindAIthon
                     </h1>
                     <p className="mt-2 text-lg text-slate-400">
                         Complete your profile to participate
@@ -192,7 +192,7 @@ const Register = () => {
                                         </div>
                                         <div className="space-y-2">
                                             <label className="text-sm font-medium">Experience (Years)</label>
-                                            <Input type="number" {...register('experience_years')} placeholder="5" className="bg-slate-900/50 border-slate-700" />
+                                            <Input type="number" min="0" step="0.1" {...register('experience_years')} placeholder="5" className="bg-slate-900/50 border-slate-700" />
                                             {errors.experience_years && <span className="text-xs text-red-400">{errors.experience_years.message}</span>}
                                         </div>
                                         <div className="space-y-2">
@@ -363,7 +363,7 @@ const Register = () => {
                                         {errors.ai_certification && <span className="text-xs text-red-400">{errors.ai_certification.message}</span>}
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-sm font-medium">What do you think is Mind AI Forge's core business area?</label>
+                                        <label className="text-sm font-medium">What do you think is mindAIthon's core business area?</label>
                                         <Textarea {...register('ai_forge_core_business_view')} placeholder="Your thoughts..." className="bg-slate-900/50 border-slate-700" />
                                         {errors.ai_forge_core_business_view && <span className="text-xs text-red-400">{errors.ai_forge_core_business_view.message}</span>}
                                     </div>

@@ -30,7 +30,7 @@ const tracks = [
     icon: Cog,
     title: 'Process Automation',
     description:
-      'Leverage AI to automate repetitive tasks and streamline workflows within Mind Ai forge.',
+      'Leverage AI to automate repetitive tasks and streamline workflows within mindAIthon.',
     color: 'from-orange-500 to-amber-500',
     bgColor: 'bg-orange-500/10',
   },
@@ -68,16 +68,14 @@ export default function Tracks() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2
-            className={`text-3xl sm:text-4xl font-bold text-white mb-4 transition-all duration-700 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
+            className={`text-3xl sm:text-4xl font-bold text-white mb-4 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
           >
             AI-Thon Tracks
           </h2>
           <div
-            className={`w-24 h-1 bg-gradient-primary mx-auto rounded-full transition-all duration-700 delay-100 ${
-              isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
-            }`}
+            className={`w-24 h-1 bg-gradient-primary mx-auto rounded-full transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
+              }`}
           />
         </div>
 
@@ -86,11 +84,10 @@ export default function Tracks() {
           {tracks.map((track, index) => (
             <div
               key={track.title}
-              className={`group relative glass-card rounded-2xl p-6 hover:-translate-y-2 transition-all duration-300 ${
-                isVisible
+              className={`group relative glass-card rounded-2xl p-6 hover:-translate-y-2 transition-all duration-300 ${isVisible
                   ? 'opacity-100 translate-y-0'
                   : 'opacity-0 translate-y-12'
-              }`}
+                }`}
               style={{
                 transitionDelay: isVisible ? `${150 + index * 100}ms` : '0ms',
               }}

@@ -55,14 +55,14 @@ export default function Hero() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0f1535]/80 border border-indigo-500/30 backdrop-blur-sm">
               <Rocket className="w-4 h-4 text-cyan-400" />
               <span className="text-sm text-slate-300">
-                Driving AI-led Innovation Across Mind Ai forge
+                Driving AI-led Innovation Across mindAIthon
               </span>
             </div>
 
             {/* Heading */}
             <div className="space-y-4">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight">
-                <span className="text-gradient">MIND AI FORGE</span>
+                <span className="text-gradient">mindAIthon</span>
               </h1>
               <p className="text-xl sm:text-2xl text-slate-400 font-light">
                 Innovate. Build. Transform.
