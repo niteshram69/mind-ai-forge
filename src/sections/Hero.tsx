@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { Rocket, Bot, Trophy } from 'lucide-react';
 
 export default function Hero() {
@@ -70,18 +71,18 @@ export default function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4">
-              <a
-                href="#register"
+              <Link
+                to="/register"
                 className="px-8 py-3.5 bg-gradient-primary text-white font-semibold rounded-full hover:scale-105 transition-all duration-200 glow-border"
               >
                 REGISTER NOW
-              </a>
-              <a
-                href="#login"
+              </Link>
+              <Link
+                to="/login"
                 className="px-8 py-3.5 border border-cyan-500/50 text-cyan-400 font-semibold rounded-full hover:bg-cyan-500/10 hover:scale-105 transition-all duration-200"
               >
                 EMPLOYEE LOGIN
-              </a>
+              </Link>
             </div>
           </div>
 

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
@@ -54,12 +55,12 @@ export default function Navbar() {
                 {link.name}
               </a>
             ))}
-            <a
-              href="/register"
+            <Link
+              to="/register"
               className="px-6 py-2.5 bg-gradient-primary text-white text-sm font-semibold rounded-full hover:scale-105 transition-transform duration-200 pulse-glow"
             >
               REGISTER
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -85,13 +86,13 @@ export default function Navbar() {
                   {link.name}
                 </a>
               ))}
-              <a
-                href="/register"
+              <Link
+                to="/register"
                 className="mx-4 px-6 py-2.5 bg-gradient-primary text-white text-sm font-semibold rounded-full text-center"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 REGISTER
-              </a>
+              </Link>
             </div>
           </div>
         )}
