@@ -49,15 +49,7 @@ const Login = () => {
         <div className="min-h-screen bg-[#0a0e27] text-slate-200 flex items-center justify-center p-4 relative">
             <div className="absolute top-4 left-4 sm:top-8 sm:left-8">
                 <a href="/" className="flex items-center gap-2 transition-opacity hover:opacity-80">
-                    <span
-                        className="font-sans text-5xl font-bold tracking-wider"
-                        style={{
-                            color: '#4ade80',
-                            textShadow: '0 0 10px rgba(74, 222, 128, 0.7), 0 0 20px rgba(74, 222, 128, 0.5)'
-                        }}
-                    >
-                        MINDTECK
-                    </span>
+                    <img src="/logo.png" alt="Mindteck" className="h-12 w-auto" />
                 </a>
             </div>
             <div className="max-w-md w-full bg-[#111827] border border-slate-800 rounded-2xl shadow-xl p-8">

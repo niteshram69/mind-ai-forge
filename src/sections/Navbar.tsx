@@ -33,15 +33,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-[72px]">
           {/* Logo */}
           <a href="/" className="flex items-center gap-2 no-underline">
-            <span
-              className="font-sans text-4xl font-bold tracking-wider"
-              style={{
-                color: '#4ade80',
-                textShadow: '0 0 10px rgba(74, 222, 128, 0.7), 0 0 20px rgba(74, 222, 128, 0.5)'
-              }}
-            >
-              MINDTECK
-            </span>
+            <img src="/logo.png" alt="Mindteck" className="h-10 w-auto" />
           </a>
 
           {/* Desktop Navigation */}
